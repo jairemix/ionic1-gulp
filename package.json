@@ -1,0 +1,17 @@
+{
+  "name": "gulp-codeschool",
+  "version": "0.1.0",
+  "description": "gulp tutorial from codeschool",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tutorial",
+    "codeschool",
+    "node",
+    "gulp"
+  ],
+  "author": "Jérémy Li",
+  "license": "MIT"
+}
