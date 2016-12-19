@@ -5,7 +5,8 @@ const gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   rename = require('gulp-rename'),
   jshint = require('gulp-jshint'),
-  plumber = require('gulp-plumber');
+  plumber = require('gulp-plumber'),
+  babel = require('gulp-babel');
 
 gulp.task('delete', () => {
   console.log(chalk.blue('running delete task'));
@@ -27,7 +28,10 @@ gulp.task('script', () => {
   console.log(chalk.blue('running script task'));
   return gulp
     .src('script/script.js')
-    .pipe(jshint())
+    .pipe(babel({
+      presets: ['es2015']
+    }))
+    // .pipe(jshint())
     .pipe(plumber()) //prevent pipe from breaking when errors are thrown
     .pipe(uglify())
     .pipe(rename({ suffix: '.min' }))
