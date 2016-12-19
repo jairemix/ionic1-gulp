@@ -1,12 +1,25 @@
-const gulp = require('gulp'),
-  chalk = require('chalk'),
-  del = require('del'),
-  cleanCSS = require('gulp-clean-css'),
-  uglify = require('gulp-uglify'),
-  rename = require('gulp-rename'),
-  jshint = require('gulp-jshint'),
-  plumber = require('gulp-plumber'),
-  babel = require('gulp-babel');
+/** works with babel-core and babel-rc **/
+import gulp from 'gulp';
+import chalk from 'chalk';
+import del from 'del';
+import cleanCSS from 'gulp-clean-css';
+import uglify from 'gulp-uglify';
+import rename from 'gulp-rename';
+import jshint from 'gulp-jshint';
+import plumber from 'gulp-plumber';
+import babel from 'gulp-babel';
+
+/** without babel-core and babel-rc **/
+
+// const gulp = require('gulp'),
+//   chalk = require('chalk'),
+//   del = require('del'),
+//   cleanCSS = require('gulp-clean-css'),
+//   uglify = require('gulp-uglify'),
+//   rename = require('gulp-rename'),
+//   jshint = require('gulp-jshint'),
+//   plumber = require('gulp-plumber'),
+//   babel = require('gulp-babel');
 
 gulp.task('delete', () => {
   console.log(chalk.blue('running delete task'));
