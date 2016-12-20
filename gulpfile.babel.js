@@ -8,6 +8,7 @@ import rename from 'gulp-rename';
 import jshint from 'gulp-jshint';
 import plumber from 'gulp-plumber';
 import babel from 'gulp-babel';
+import typescript from 'gulp-typescript';
 
 /** without babel-core and babel-rc **/
 
@@ -51,8 +52,21 @@ gulp.task('script', () => {
     .pipe(gulp.dest('www'));
 });
 
+gulp.task('ts-script', () => {
+  console.log(chalk.blue('running ts script task'));
+  return gulp
+    .src('script/typescript.ts')
+    .pipe(typescript({
+      noImplicitAny: false,
+      out: 'typescript.js'
+    }))
+    .pipe(uglify())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest('www'));
+});
+
 //task that runs when typing in just gulp
-gulp.task('default', ['delete', 'style', 'script', 'watch'], () => {
+gulp.task('default', ['delete', 'style', 'ts-script', 'script', 'watch'], () => {
   console.log(chalk.blue('running default task after tasks in array'));
 });
 
