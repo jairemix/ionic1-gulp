@@ -1,3 +1,4 @@
 node_modules
 www
 app/bower_components
+.tmp

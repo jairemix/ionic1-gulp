@@ -26,6 +26,8 @@ import requireDir from 'require-dir';
 
 let paths = gulp.paths = {
   bowerComponents: 'app/bower_components',
+  scssFiles: ['app/*/styles/**/*.scss'],
+  cssFiles: ['.tmp/*/styles/*.css'],
   dist: 'www',
   htmlFiles: ['app/**/*.html', '!app/bower_components/**/*.html'],
   jsFiles: ['app/**/*.js', '!app/bower_components/**/*.js']

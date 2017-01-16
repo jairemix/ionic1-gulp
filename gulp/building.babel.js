@@ -5,11 +5,26 @@ import del from 'del';
 import cleanCSS from 'gulp-clean-css';
 // import uglify from 'gulp-uglify';
 import rename from 'gulp-rename';
-import plumber from 'gulp-plumber';
 import babel from 'gulp-babel';
 import concat from 'gulp-concat';
+import plumber from 'gulp-plumber';
+import sourcemaps from 'gulp-sourcemaps';
+import sass from 'gulp-sass';
+import debug from 'gulp-debug';
 
 console.log(chalk.green('building file loaded'));
+
+gulp.task('build-styles', () => {
+  console.log(chalk.blue('running styles task'));
+  return gulp.src('app/**!(bower_components)/!(_)*.scss')
+    // .pipe(debug())
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(sourcemaps.write())
+    // .pipe(autoprefixer({ browsers: ['last 2 versions'], remove: false}))
+    .pipe(gulp.dest(gulp.paths.dist));
+});
 
 gulp.task('build-bower', () => {
   console.log(chalk.blue('running build bower task'));
@@ -18,10 +33,11 @@ gulp.task('build-bower', () => {
     .pipe(gulp.dest(`${gulp.paths.dist}/bower_components`));
 });
 
-gulp.task('build', ['build-html', 'build-bower'], () => {
+gulp.task('build', ['build-styles', 'build-html', 'build-bower'], () => {
   console.log(chalk.blue('running build task'));
   return gulp
     .src(gulp.paths.jsFiles)
+    // .pipe(debug())
     // .pipe(concat('script.js')) //concatenate before transpiling to avoid repeated es5 code
     .pipe(babel({
       presets: ['es2015']

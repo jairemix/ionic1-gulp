@@ -1,0 +1,15 @@
+{
+  "name": "ausmed-cpd",
+  "version": "0.0.1",
+  "dependencies": {
+    "underscore": "^1.8.3",
+    "ionic": "^1.3.2"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.6.1"
+  },
+  "resolutions": {
+    "angular": "1.5.3",
+    "angular-mocks": "~1.5.0"
+  }
+}
